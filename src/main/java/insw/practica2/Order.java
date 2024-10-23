@@ -2,43 +2,60 @@ package insw.practica2;
 import java.util.List;
 
 public class Order {
-    public String customerName;
+	public String customerName;
     public CustomerType customerType;
     public List<String> items;
     public double totalAmount;
     public double discount;
     public double tax;
 
-   
-    public Order(String customerName, CustomerType customerType, List<String> items, double totalAmount) {
-        this.customerName = customerName;
-        this.customerType = customerType;
-        this.items = items;
-        this.totalAmount = totalAmount;
-        this.discount = 0;
-        this.tax = 0;
-    }
 
-    
+    public Order(String nombre,
+            CustomerType customerType,
+            List<String> items,
+            double totalAmount) {
+   customerName = nombre;
+   this.customerType = customerType;
+   this.items = items;
+   this.totalAmount = totalAmount;
+   this.discount = 0;
+   this.tax = 0;
+}
+
     public void applyDiscount() {
-        this.discount = DiscountCalculator.calculateDiscount(this.customerType, this.totalAmount);
-    }
-
+        if (this.customerType.equals(CustomerType.REGULAR)) {
+            if (this.totalAmount > 100) {
+                this.discount = this.totalAmount * 0.05;
+            }
+            if (this.totalAmount > 500) {
+                this.discount = this.totalAmount * 0.1;
+            }
+        } else if (this.customerType.equals(CustomerType.VIP)) {
+            if (this.totalAmount > 100) {
+                this.discount = this.totalAmount * 0.1;
+            }
+            if (this.totalAmount > 500) {
+                this.discount = this.totalAmount * 0.15;
+            }
+        }
   
-    public void calculateTax() {
-        this.tax = TaxCalculator.calculateTax(this.totalAmount);
+        if (this.totalAmount > 1000) {
+            this.discount = this.totalAmount * 0.2;
+        }
     }
 
-    
-    public void printOrderDetails() {
-        double finalAmount = this.totalAmount - this.discount + this.tax;
-        System.out.println("Customer: " + this.customerName);
-        System.out.println("Customer Type: " + this.customerType);
-        System.out.println("Items: " + String.join(", ", this.items));
-        System.out.println("Total Amount: " + this.totalAmount);
-        System.out.println("Discount: " + this.discount);
-        System.out.println("Tax: " + this.tax);
-        System.out.println("Final Amount: " + finalAmount);
-        System.out.println("");
+    public void calculateTax() {
+        this.tax = this.totalAmount * 0.15;
+    }
+
+    public String returnOrderDetails() {
+        double finalAmount = totalAmount - this.discount + this.tax;
+        return "Customer: " + this.customerName +
+                " Customer Type: " + this.customerType +
+                " Items: " + String.join(", ", this.items) +
+                " Total Amount: " + this.totalAmount +
+                " Discount: " + this.discount +
+                " Tax: " + this.tax +
+                " Final Amount: " + finalAmount;
     }
 }

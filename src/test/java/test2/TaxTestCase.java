@@ -1,4 +1,4 @@
-package practica2;
+package test2;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 

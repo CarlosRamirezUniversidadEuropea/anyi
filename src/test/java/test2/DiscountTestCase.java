@@ -1,4 +1,4 @@
-package practica2;
+package test2;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ public class DiscountTestCase {
     public void testRegularCustomerDiscountAbove100() {
         double totalAmount = 150;
         double discount = DiscountCalculator.calculateDiscount(CustomerType.REGULAR, totalAmount);
-        assertEquals(7.5, discount, 0.01);  // 
+        assertEquals(7.5, discount, 0.01);  
     }
 
     @Test
