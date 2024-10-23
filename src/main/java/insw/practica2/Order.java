@@ -58,4 +58,16 @@ public class Order {
                 " Tax: " + this.tax +
                 " Final Amount: " + finalAmount;
     }
+    
+    public void printOrderDetails() {
+        double finalAmount = this.totalAmount - this.discount + this.tax;
+        System.out.println("Customer: " + this.customerName);
+        System.out.println("Customer Type: " + this.customerType);
+        System.out.println("Items: " + String.join(", ", this.items));
+        System.out.println("Total Amount: " + this.totalAmount);
+        System.out.println("Discount: " + this.discount);
+        System.out.println("Tax: " + this.tax);
+        System.out.println("Final Amount: " + finalAmount);
+        System.out.println("");
+    }
 }
