@@ -8,13 +8,11 @@ public class Buscador {
         for(String phrase: lista){
             if(phrase.equals(frase)){
                 return true;
-            } else {
-                return false;
             }
+  
         }
         return false;
     }
-
     public boolean buscarPalabra(String palabra, List<String> lista){
         return lista.contains(palabra);
     }
