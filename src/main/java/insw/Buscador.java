@@ -4,13 +4,12 @@ import java.util.List;
 
 public class Buscador {
 
-    public boolean buscarFrase(String frase, List<String> lista) {
+	public boolean buscarFrase(String frase, List<String> lista) {
         for(String phrase: lista){
             if(phrase.equals(frase)){
                 return true;
-            } else {
-                return false;
             }
+  
         }
         return false;
     }
