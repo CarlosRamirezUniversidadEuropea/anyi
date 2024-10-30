@@ -37,3 +37,15 @@ jobs:
     # Ejecuta los tests (opcional, puedes separar esta tarea si lo prefieres)
     - name: Run tests with Maven
       run: mvn test
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "marcos-martin"  # change with your app name
+          heroku_email: "carlos.ramirez2@universidadeuropea.com"  # change with your Heroku email
